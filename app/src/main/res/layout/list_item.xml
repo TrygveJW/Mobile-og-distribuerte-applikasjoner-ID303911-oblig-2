@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_for_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FBA2F7">
+
+
+<!--    com.android.volley.toolbox.NetworkImageView-->
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#4CFFD5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/card_name"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="#67BEFF"
+        android:text="name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card_price"
+        android:layout_width="134dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:background="#FF3939"
+        android:text="price"
+        app:layout_constraintStart_toEndOf="@+id/item_image"
+        app:layout_constraintTop_toBottomOf="@+id/card_name" />
+
+    <TextView
+        android:id="@+id/card_desc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="#80FF8C"
+        android:text="desc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_image"
+        app:layout_constraintTop_toBottomOf="@+id/card_price" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

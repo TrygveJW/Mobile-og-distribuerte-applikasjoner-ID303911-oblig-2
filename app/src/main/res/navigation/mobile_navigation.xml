@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="no.trygvejw.fant.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+
+        <argument
+            android:name="itemId"
+            app:argType="long"
+            android:defaultValue="1L" />
+        <action
+            android:id="@+id/action_nav_home_to_buiItemFragment2"
+            app:destination="@id/buiItemFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="no.trygvejw.fant.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+
+
+    <fragment
+        android:id="@+id/login"
+        android:name="no.trygvejw.fant.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/buiItemFragment"
+        android:name="no.trygvejw.fant.BuiItemFragment"
+        android:label="fragment_buy_item"
+        tools:layout="@layout/fragment_buy_item">
+        <argument
+            android:name="itemId"
+            app:argType="long"
+            android:defaultValue="1L" />
+    </fragment>
+</navigation>
