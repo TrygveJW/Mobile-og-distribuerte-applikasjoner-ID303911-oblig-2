@@ -97,6 +97,11 @@ public class MainActivity extends AppCompatActivity {
                 //directions.setItemId(saleItem.getId());
                 //directions.getArguments().putLong("itemId",saleItem.getId());
                 Navigation.findNavController(this, R.id.nav_host_fragment).navigate(directions);
+                break;
+            case R.id.app_bar_new_user:
+                NavDirections directions_new_user = HomeFragmentDirections.actionNavHomeToCreateUser();
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(directions_new_user);
+
 
         }
         return super.onOptionsItemSelected(item);

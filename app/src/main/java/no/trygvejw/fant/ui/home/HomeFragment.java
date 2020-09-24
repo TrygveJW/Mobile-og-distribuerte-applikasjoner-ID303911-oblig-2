@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment {
         FloatingActionButton fab = container.getRootView().findViewById(R.id.fab);
         fab.show();
 
+
         ItemDB.getInstance().refreshDb();
         System.out.println("AAAAAAAAAAAA");
 

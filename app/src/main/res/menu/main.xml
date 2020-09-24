@@ -18,6 +18,9 @@
         android:title="Loggin"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/app_bar_new_user"
+        android:title="app_bar_new_user" />
+    <item
         android:id="@+id/app_bar_log_out"
         android:title="app_bar_log_out" />
     <item

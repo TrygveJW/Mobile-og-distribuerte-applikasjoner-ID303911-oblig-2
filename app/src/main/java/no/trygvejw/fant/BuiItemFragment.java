@@ -3,10 +3,14 @@ package no.trygvejw.fant;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -32,7 +36,13 @@ public class BuiItemFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        menu.clear();
+        super.onPrepareOptionsMenu(menu);
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
 
@@ -43,6 +53,8 @@ public class BuiItemFragment extends Fragment {
         // Inflate the layout for this fragment
         FloatingActionButton fab = container.getRootView().findViewById(R.id.fab);
         fab.hide();
+
+
 
         View root = inflater.inflate(R.layout.fragment_buy_item, container, false);
 

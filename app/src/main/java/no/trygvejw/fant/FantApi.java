@@ -26,7 +26,7 @@ public class FantApi {
         return instance;
     }
 
-    public static final String BASE_URL = "http://192.168.0.168:8080";
+    public static final String BASE_URL = "http://[2001:700:300:4116:c5d7:b986:8cd8:d132]:8080";
 
     // -- auth -- //
     public static final String GET_PUBKEY_URL = BASE_URL + "/publickey.pem";

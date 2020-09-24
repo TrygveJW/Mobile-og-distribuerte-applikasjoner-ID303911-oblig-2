@@ -34,7 +34,8 @@ import no.trygvejw.fant.items.ItemDB;
 import no.trygvejw.fant.items.SaleItem;
 import no.trygvejw.fant.ui.gallery.GalleryFragment;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> implements Filterable {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder>// implements Filterable
+{
 
 
     public ItemAdapter() {
@@ -65,10 +66,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         return ItemDB.getInstance().getSize();
     }
 
+    /*
     @Override
     public Filter getFilter() {
         // https://howtodoandroid.com/search-filter-recyclerview-android/
-        /*return new Filter() {
+        return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
@@ -95,8 +97,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
                 notifyDataSetChanged();
             }
-        }*/
+        }
     }
+
+     */
 
     public static class ItemData{
         public String name;

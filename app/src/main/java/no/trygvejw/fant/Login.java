@@ -7,11 +7,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class Login extends Fragment {
@@ -21,11 +25,29 @@ public class Login extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        menu.clear();
+        super.onPrepareOptionsMenu(menu);
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        FloatingActionButton fab = container.getRootView().findViewById(R.id.fab);
+        fab.hide();
+
+
+
+
+
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -34,7 +56,8 @@ public class Login extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setHasOptionsMenu(false);
+
+        /*
 
 
 
@@ -118,9 +141,11 @@ public class Login extends Fragment {
                         passwordEditText.getText().toString());
             }
         });
+
+         */
     }
 
-    private void updateUiWithUser(LoggedInUserView model) {
+/*    private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         if (getContext() != null && getContext().getApplicationContext() != null) {
@@ -135,6 +160,6 @@ public class Login extends Fragment {
                     errorString,
                     Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
 }
