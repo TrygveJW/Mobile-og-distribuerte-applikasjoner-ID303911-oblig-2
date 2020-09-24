@@ -9,6 +9,8 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 
+import java.util.Arrays;
+
 import no.trygvejw.fant.api.Token;
 import no.trygvejw.fant.api.VolleyHttpQue;
 import no.trygvejw.fant.items.User;
@@ -24,24 +26,30 @@ public class FantApi {
         return instance;
     }
 
-    private static final String BASE_URL = "http://localhost:8080";
+    public static final String BASE_URL = "http://192.168.0.168:8080";
 
     // -- auth -- //
-    private static final String GET_PUBKEY_URL = BASE_URL + "/publickey.pem";
-    private static final String CREATE_USER_URL = BASE_URL + "/auth/create";
-    private static final String LOGIN_URL = BASE_URL + "/auth/login?uid=%s&pwd=%s";
-    private static final String CHANGE_PASS_URL = BASE_URL + "/auth/changepassword";
+    public static final String GET_PUBKEY_URL = BASE_URL + "/publickey.pem";
+    public static final String CREATE_USER_URL = BASE_URL + "/auth/create";
+    public static final String LOGIN_URL = BASE_URL + "/auth/login?uid=%s&pwd=%s";
+    public static final String CHANGE_PASS_URL = BASE_URL + "/auth/changepassword";
 
     // -- api -- //
-    private static final String ADD_ITEM_URL = BASE_URL + "/api/add-item";
-    private static final String GET_ITEMS_URL = BASE_URL + "/api/items";
-    private static final String GET_IMAGE_URL = BASE_URL + "/api/image/%s?width=%i";
-    private static final String PURCHASE_ITEM_URL = BASE_URL + "/api/purchase?itemid=%i";
+    public static final String ADD_ITEM_URL = BASE_URL + "/api/add-item";
+    public static final String GET_ITEMS_URL = BASE_URL + "/api/items";
+    public static final String GET_IMAGE_URL = BASE_URL + "/api/image/%s?width=%s";
+    public static final String PURCHASE_ITEM_URL = BASE_URL + "/api/purchase?itemid=%s";
 
     public static final Response.ErrorListener emptyErrorListener = new Response.ErrorListener() {
 
         @Override
         public void onErrorResponse(VolleyError error) {
+            error.printStackTrace();
+            System.out.printf("HTTP ERROR: {}", error.getMessage());
+            if (error.networkResponse != null){
+                System.out.printf("\n{}\n", Arrays.toString(error.networkResponse.data));
+            }
+
 
         }
     };
@@ -57,7 +65,7 @@ public class FantApi {
 
     public void SendJwtRequest(Request request){
         try {
-            request.getHeaders().put("Authorization", CurrentSession.getInstance().);
+            request.getHeaders().put("Authorization", this.session.token);
         } catch (AuthFailureError e){e.printStackTrace();}
 
     }
@@ -100,27 +108,11 @@ public class FantApi {
             Response.Listener<String> res_listener,
             Response.ErrorListener errorListener){
 
-        StringRequest request = new StringRequest(
-                Request.Method.PUT,
-                LOGIN_URL,
-                res_listener,
-                errorListener);
-
-    }
-
-
-
-    public static void test(){
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "", null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                response.length();
-            }
-        }, );
-
 
 
     }
+
+
 
 
     private static class CurrentSession {

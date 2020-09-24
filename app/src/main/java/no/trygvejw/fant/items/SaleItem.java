@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import java.math.BigDecimal;
 import java.net.URI;
+import java.net.URL;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -30,7 +31,4 @@ public class SaleItem {
 
     private User itemOwner;
 
-    public Uri getImageUri(){
-        return null;
-    }
 }

@@ -27,7 +27,7 @@ public class VolleyHttpQue {
     }
 
     private VolleyHttpQue(){
-        this.requestQueue = Volley.newRequestQueue(FantApplication.getAppContext());
+        this.requestQueue = Volley.newRequestQueue(FantApplication.instance().getAppContext());
 
         ImageLoader.ImageCache imageCache = new ImageLoader.ImageCache() {
             private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(20);
@@ -48,8 +48,8 @@ public class VolleyHttpQue {
 
     }
 
-    public <T> void addToRequestQue(Request<T> request){
-        requestQueue.add(request);
+    public <T> Request<T> addToRequestQue(Request<T> request){
+        return requestQueue.add(request);
     }
 
     public ImageLoader getImageLoader(){

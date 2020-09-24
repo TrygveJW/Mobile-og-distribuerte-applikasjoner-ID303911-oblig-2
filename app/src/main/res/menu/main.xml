@@ -7,7 +7,19 @@
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="android.widget.SearchView" />-->
 
-    <item android:title="Loggin_button" />
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="android.widget.SearchView" />
+    <item
+        android:id="@+id/app_bar_login"
+        android:title="Loggin"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/app_bar_log_out"
+        android:title="app_bar_log_out" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

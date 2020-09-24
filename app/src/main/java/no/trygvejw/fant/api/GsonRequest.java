@@ -25,8 +25,12 @@ public class GsonRequest<T> extends Request<T> {
      * @param clazz Relevant class object, for Gson's reflection
      * @param headers Map of request headers
      */
-    public GsonRequest(String url, Class<T> clazz, Map<String, String> headers,
-                       Response.Listener<T> listener, Response.ErrorListener errorListener) {
+    public GsonRequest(String url,
+                       Class<T> clazz,
+                       Map<String, String> headers,
+                       Response.Listener<T> listener,
+                       Response.ErrorListener errorListener
+    ) {
         super(Method.GET, url, errorListener);
         this.clazz = clazz;
         this.headers = headers;
@@ -49,6 +53,7 @@ public class GsonRequest<T> extends Request<T> {
             String json = new String(
                     response.data,
                     HttpHeaderParser.parseCharset(response.headers));
+            System.out.println(json);
             return Response.success(
                     gson.fromJson(json, clazz),
                     HttpHeaderParser.parseCacheHeaders(response));

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import no.trygvejw.fant.R;
+import no.trygvejw.fant.items.ItemDB;
 
 public class HomeFragment extends Fragment {
 
@@ -29,6 +30,9 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         FloatingActionButton fab = container.getRootView().findViewById(R.id.fab);
         fab.show();
+
+        ItemDB.getInstance().refreshDb();
+        System.out.println("AAAAAAAAAAAA");
 
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);

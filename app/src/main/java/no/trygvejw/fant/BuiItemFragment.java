@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import no.trygvejw.fant.api.VolleyHttpQue;
 import no.trygvejw.fant.items.ItemDB;
 import no.trygvejw.fant.items.SaleItem;
 import no.trygvejw.fant.ui.home.HomeFragment;
@@ -52,6 +54,14 @@ public class BuiItemFragment extends Fragment {
         TextView name = root.findViewById(R.id.buy_name);
         TextView price = root.findViewById(R.id.buy_price);
         TextView desc = root.findViewById(R.id.buy_desc);
+
+        NetworkImageView imageView = root.findViewById(R.id.buy_image);
+
+        if (!saleItem.getItemImages().isEmpty()){
+
+            String url = String.format(FantApi.GET_IMAGE_URL, saleItem.getItemImages().get(0).getId(), 0);
+            imageView.setImageUrl(url, VolleyHttpQue.instance().getImageLoader());
+        }
 
         name.setText(saleItem.getTitle());
         price.setText(saleItem.getPrice().toString());

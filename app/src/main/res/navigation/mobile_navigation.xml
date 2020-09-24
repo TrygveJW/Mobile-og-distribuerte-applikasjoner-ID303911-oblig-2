@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_gallery"
             app:destination="@id/nav_gallery" />
+        <action
+            android:id="@+id/action_nav_home_to_create_user"
+            app:destination="@id/create_user" />
 
 
     </fragment>
@@ -51,4 +54,9 @@
             app:argType="long"
             android:defaultValue="1L" />
     </fragment>
+    <fragment
+        android:id="@+id/create_user"
+        android:name="no.trygvejw.fant.create_user"
+        android:label="fragment_create_user"
+        tools:layout="@layout/fragment_create_user" />
 </navigation>
