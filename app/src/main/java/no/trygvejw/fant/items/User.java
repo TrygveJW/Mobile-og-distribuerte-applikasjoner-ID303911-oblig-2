@@ -2,7 +2,11 @@ package no.trygvejw.fant.items;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.json.bind.annotation.JsonbTransient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,4 +30,10 @@ public class User {
     List<SaleItem> items;
 
     String name;
+
+
+    //List<Group> groups;
+
+
+    //Map<String,String> properties = new HashMap<>();
 }

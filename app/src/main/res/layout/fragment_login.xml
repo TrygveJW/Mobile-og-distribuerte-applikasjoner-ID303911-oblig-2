@@ -12,7 +12,7 @@
     tools:context=".a$LoginFragment">
 
     <EditText
-        android:id="@+id/new_user_email"
+        android:id="@+id/login_user_mail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -20,14 +20,14 @@
         android:layout_marginEnd="24dp"
         android:autofillHints="@string/prompt_email"
         android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
+        android:inputType="textShortMessage"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/new_user_password"
+        android:id="@+id/login_user_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -41,10 +41,10 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_user_email" />
+        app:layout_constraintTop_toBottomOf="@+id/login_user_mail" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/login_submitt_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -52,12 +52,12 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_user_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_user_password"
         app:layout_constraintVertical_bias="0.2" />
 
     <ProgressBar
@@ -71,8 +71,18 @@
         android:layout_marginBottom="64dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/new_user_password"
-        app:layout_constraintStart_toStartOf="@+id/new_user_password"
+        app:layout_constraintEnd_toEndOf="@+id/login_user_password"
+        app:layout_constraintStart_toStartOf="@+id/login_user_password"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/login_user_mail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

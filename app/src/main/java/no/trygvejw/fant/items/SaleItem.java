@@ -30,5 +30,6 @@ public class SaleItem {
 
 
     private User itemOwner;
+    private User itemBuyer;
 
 }

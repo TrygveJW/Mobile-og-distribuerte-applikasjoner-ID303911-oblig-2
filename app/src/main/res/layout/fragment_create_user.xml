@@ -9,10 +9,10 @@ android:paddingLeft="@dimen/fragment_horizontal_margin"
 android:paddingTop="@dimen/fragment_vertical_margin"
 android:paddingRight="@dimen/fragment_horizontal_margin"
 android:paddingBottom="@dimen/fragment_vertical_margin"
-tools:context=".create_user">
+tools:context=".ui.CreateUserFragment">
 
     <EditText
-        android:id="@+id/new_user_password"
+        android:id="@+id/new_user_user_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -25,11 +25,12 @@ tools:context=".create_user">
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_user_email" />
+        app:layout_constraintTop_toBottomOf="@+id/new_user_user_mail" />
 
     <EditText
-        android:id="@+id/new_user_email"
+        android:id="@+id/new_user_user_mail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -44,66 +45,62 @@ tools:context=".create_user">
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/new_user_submitt_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="64dp"
-        android:enabled="false"
+        android:layout_marginBottom="184dp"
+        android:enabled="true"
         android:text="register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_user_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_user_password"
         app:layout_constraintVertical_bias="0.926" />
 
     <ProgressBar
-    android:id="@+id/loading"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginStart="32dp"
-    android:layout_marginTop="64dp"
-    android:layout_marginEnd="32dp"
-    android:layout_marginBottom="64dp"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/new_user_password"
-    app:layout_constraintStart_toStartOf="@+id/new_user_password"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.3" />
+        android:id="@+id/loading"
+        android:layout_width="4dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/new_user_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
+        android:hint="Username"
         android:inputType="textPersonName"
-        android:text="Username"
-        app:layout_constraintBottom_toTopOf="@+id/new_user_email"
+        app:layout_constraintBottom_toTopOf="@+id/login_user_mail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.528" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/new_user_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="208dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/new_user_email"
+        app:layout_constraintBottom_toTopOf="@+id/login_user_mail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.867" />
@@ -112,7 +109,7 @@ tools:context=".create_user">
         android:id="@+id/new_user_error_msg"
         android:layout_width="274dp"
         android:layout_height="38dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

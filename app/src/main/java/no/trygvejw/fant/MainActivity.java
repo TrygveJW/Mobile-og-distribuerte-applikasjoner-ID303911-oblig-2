@@ -1,12 +1,9 @@
 package no.trygvejw.fant;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -23,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import no.trygvejw.fant.items.ItemDB;
-import no.trygvejw.fant.ui.home.HomeFragmentDirections;
+import no.trygvejw.fant.ui.MainFragment.HomeFragmentDirections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,11 +34,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+        MainActivity a = this;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (CurrentUser.getInstance().isLoggedIn()){
+                    NavDirections directions_new_user = HomeFragmentDirections.actionNavHomeToAddItem();
+                    Navigation.findNavController(a, R.id.nav_host_fragment).navigate(directions_new_user);
+                } else {
+                    Snackbar.make(view, "Logg inn to add item", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+
+
             }
         });
 
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_user)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -67,12 +72,7 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
-                (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
+
 
 
         return true;
@@ -88,19 +88,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.app_bar_login:
-                NavDirections directions = HomeFragmentDirections.actionNavHomeToLogin();
 
-
-                //directions.setItemId(saleItem.getId());
-
-                //directions.setItemId(saleItem.getId());
-                //directions.getArguments().putLong("itemId",saleItem.getId());
-                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(directions);
-                break;
-            case R.id.app_bar_new_user:
-                NavDirections directions_new_user = HomeFragmentDirections.actionNavHomeToCreateUser();
+            case R.id.app_bar_user:
+                NavDirections directions_new_user = HomeFragmentDirections.actionNavHomeToUser();
                 Navigation.findNavController(this, R.id.nav_host_fragment).navigate(directions_new_user);
+                break;
 
 
         }

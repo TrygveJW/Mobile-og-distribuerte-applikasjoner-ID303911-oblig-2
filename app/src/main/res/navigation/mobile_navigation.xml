@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="no.trygvejw.fant.ui.home.HomeFragment"
+        android:name="no.trygvejw.fant.ui.MainFragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
 
@@ -19,34 +19,29 @@
             android:id="@+id/action_nav_home_to_buiItemFragment2"
             app:destination="@id/buiItemFragment" />
         <action
-            android:id="@+id/action_nav_home_to_login"
-            app:destination="@id/login" />
-        <action
             android:id="@+id/action_nav_home_to_nav_gallery"
-            app:destination="@id/nav_gallery" />
+            app:destination="@id/nav_user" />
         <action
-            android:id="@+id/action_nav_home_to_create_user"
-            app:destination="@id/create_user" />
+            android:id="@+id/action_nav_home_to_user"
+            app:destination="@id/nav_user" />
+        <action
+            android:id="@+id/action_nav_home_to_add_item"
+            app:destination="@id/add_item" />
 
 
     </fragment>
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="no.trygvejw.fant.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
 
 
 
     <fragment
-        android:id="@+id/login"
-        android:name="no.trygvejw.fant.Login"
+        android:id="@+id/login_submitt_btn"
+        android:name="no.trygvejw.fant.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/buiItemFragment"
-        android:name="no.trygvejw.fant.BuiItemFragment"
+        android:name="no.trygvejw.fant.ui.BuyItemFragment"
         android:label="fragment_buy_item"
         tools:layout="@layout/fragment_buy_item">
         <argument
@@ -56,7 +51,24 @@
     </fragment>
     <fragment
         android:id="@+id/create_user"
-        android:name="no.trygvejw.fant.create_user"
+        android:name="no.trygvejw.fant.ui.CreateUserFragment"
         android:label="fragment_create_user"
         tools:layout="@layout/fragment_create_user" />
+    <fragment
+        android:id="@+id/nav_user"
+        android:name="no.trygvejw.fant.ui.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_user_to_login"
+            app:destination="@id/login_submitt_btn" />
+        <action
+            android:id="@+id/action_user_to_create_user"
+            app:destination="@id/create_user" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_item"
+        android:name="no.trygvejw.fant.ui.AddItemFragment"
+        android:label="fragment_add_item"
+        tools:layout="@layout/fragment_add_item" />
 </navigation>
