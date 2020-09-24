@@ -1,23 +1,23 @@
 package no.trygvejw.fant;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import no.trygvejw.fant.items.ItemDB;
 import no.trygvejw.fant.ui.MainFragment.HomeFragmentDirections;
@@ -38,18 +38,20 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CurrentUser.getInstance().isLoggedIn()){
+                if (CurrentUser.getInstance()
+                               .isLoggedIn()) {
                     NavDirections directions_new_user = HomeFragmentDirections.actionNavHomeToAddItem();
-                    Navigation.findNavController(a, R.id.nav_host_fragment).navigate(directions_new_user);
+                    Navigation.findNavController(a, R.id.nav_host_fragment)
+                              .navigate(directions_new_user);
                 } else {
                     Snackbar.make(view, "Logg inn to add item", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                            .setAction("Action", null)
+                            .show();
                 }
 
 
             }
         });
-
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -73,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
 
 
-
-
         return true;
     }
 
@@ -87,11 +87,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.app_bar_user:
                 NavDirections directions_new_user = HomeFragmentDirections.actionNavHomeToUser();
-                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(directions_new_user);
+                Navigation.findNavController(this, R.id.nav_host_fragment)
+                          .navigate(directions_new_user);
                 break;
 
 

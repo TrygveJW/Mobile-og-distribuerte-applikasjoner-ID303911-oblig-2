@@ -2,11 +2,7 @@ package no.trygvejw.fant.items;
 
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.json.bind.annotation.JsonbTransient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

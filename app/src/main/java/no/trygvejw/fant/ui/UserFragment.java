@@ -1,19 +1,18 @@
 package no.trygvejw.fant.ui;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -36,6 +35,7 @@ public class UserFragment extends Fragment {
         menu.clear();
         super.onPrepareOptionsMenu(menu);
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -46,26 +46,35 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FloatingActionButton fab = container.getRootView().findViewById(R.id.fab);
+        FloatingActionButton fab = container.getRootView()
+                                            .findViewById(R.id.fab);
         fab.hide();
 
         View root = inflater.inflate(R.layout.fragment_user, container, false);
-        login_out =  root.findViewById(R.id.user_login_out);
-        new_user = root.findViewById(R.id.user_create_user);
-        status = root.findViewById(R.id.user_status);
+        login_out = root.findViewById(R.id.user_login_out);
+        new_user  = root.findViewById(R.id.user_create_user);
+        status    = root.findViewById(R.id.user_status);
 
-        if (CurrentUser.getInstance().isLoggedIn()){
+        if (CurrentUser.getInstance()
+                       .isLoggedIn()) {
             login_out.setText(R.string.Log_out);
-            if(CurrentUser.getInstance().getUser() != null){
-                status.setText(String.format("Logged in as: %s", CurrentUser.getInstance().getUser().getName()));
+            if (CurrentUser.getInstance()
+                           .getUser() != null) {
+                status.setText(String.format("Logged in as: %s", CurrentUser.getInstance()
+                                                                            .getUser()
+                                                                            .getName()));
             }
 
 
             login_out.setOnClickListener(v -> {
-                CurrentUser.getInstance().setJwt("");
-                CurrentUser.getInstance().setLoggedIn(false);
-                CurrentUser.getInstance().setUser(null);
-                Navigation.findNavController(getView()).popBackStack();
+                CurrentUser.getInstance()
+                           .setJwt("");
+                CurrentUser.getInstance()
+                           .setLoggedIn(false);
+                CurrentUser.getInstance()
+                           .setUser(null);
+                Navigation.findNavController(getView())
+                          .popBackStack();
 
             });
         } else {

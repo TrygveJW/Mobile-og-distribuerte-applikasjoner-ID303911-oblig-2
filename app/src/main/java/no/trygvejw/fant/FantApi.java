@@ -29,7 +29,7 @@ public class FantApi {
         public void onErrorResponse(VolleyError error) {
             error.printStackTrace();
             System.out.printf("HTTP ERROR: {}", error.getMessage());
-            if (error.networkResponse != null){
+            if (error.networkResponse != null) {
                 System.out.printf("\n{}\n", Arrays.toString(error.networkResponse.data));
             }
         }

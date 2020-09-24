@@ -13,7 +13,6 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,16 +33,11 @@ public class HomeFragment extends Fragment {
         fab.show();
 
 
-
-
-
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
-
-
         // -- recycl -- //
-        recyclerView = (RecyclerView) root.findViewById(R.id.recycler_view_items);
+        recyclerView = root.findViewById(R.id.recycler_view_items);
 
 
         recyclerView.setHasFixedSize(true);
@@ -82,7 +76,6 @@ public class HomeFragment extends Fragment {
         });
         super.onCreateOptionsMenu(menu, inflater);
     }
-
 
 
     @Override

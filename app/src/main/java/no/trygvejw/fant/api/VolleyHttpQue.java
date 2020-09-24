@@ -8,9 +8,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-import no.trygvejw.fant.FantApi;
 import no.trygvejw.fant.FantApplication;
-import no.trygvejw.fant.MainActivity;
 
 public class VolleyHttpQue {
 
@@ -19,18 +17,11 @@ public class VolleyHttpQue {
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
 
-    public static VolleyHttpQue instance(){
-        if (instance == null){
-            instance = new VolleyHttpQue();
-        }
-        return instance;
-    }
-
-    private VolleyHttpQue(){
-        this.requestQueue = Volley.newRequestQueue(FantApplication.instance().getAppContext());
+    private VolleyHttpQue() {
+        this.requestQueue = Volley.newRequestQueue(FantApplication.getAppContext());
 
         ImageLoader.ImageCache imageCache = new ImageLoader.ImageCache() {
-            private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(20);
+            private final LruCache<String, Bitmap> cache = new LruCache<>(20);
 
             @Override
             public Bitmap getBitmap(String url) {
@@ -38,8 +29,9 @@ public class VolleyHttpQue {
             }
 
             @Override
-            public void putBitmap(String url, Bitmap bitmap) {
-                cache.put(url,bitmap);
+            public void putBitmap(String url,
+                                  Bitmap bitmap) {
+                cache.put(url, bitmap);
 
             }
         };
@@ -48,11 +40,18 @@ public class VolleyHttpQue {
 
     }
 
-    public <T> Request<T> addToRequestQue(Request<T> request){
-        return requestQueue.add(request);
+    public static VolleyHttpQue instance() {
+        if (instance == null) {
+            instance = new VolleyHttpQue();
+        }
+        return instance;
     }
 
-    public ImageLoader getImageLoader(){
+    public <T> void addToRequestQue(Request<T> request) {
+        requestQueue.add(request);
+    }
+
+    public ImageLoader getImageLoader() {
         return imageLoader;
     }
 

@@ -1,10 +1,6 @@
 package no.trygvejw.fant.items;
 
-import android.net.Uri;
-
 import java.math.BigDecimal;
-import java.net.URI;
-import java.net.URL;
 import java.util.List;
 
 import lombok.AllArgsConstructor;

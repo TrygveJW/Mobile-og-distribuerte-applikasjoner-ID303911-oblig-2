@@ -7,15 +7,7 @@ public class FantApplication extends Application {
     private static FantApplication Instance;
     private static Context AppContext;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Instance = this;
-
-        this.setAppContext(getApplicationContext());
-    }
-
-    public static FantApplication instance(){
+    public static FantApplication instance() {
         return Instance;
     }
 
@@ -24,6 +16,14 @@ public class FantApplication extends Application {
     }
 
     public void setAppContext(Context mAppContext) {
-        this.AppContext = mAppContext;
+        AppContext = mAppContext;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Instance = this;
+
+        this.setAppContext(getApplicationContext());
     }
 }

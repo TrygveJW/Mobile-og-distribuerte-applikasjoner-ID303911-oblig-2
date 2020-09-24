@@ -22,9 +22,7 @@ import no.trygvejw.fant.api.VolleyHttpQue;
 import no.trygvejw.fant.items.ItemDB;
 import no.trygvejw.fant.items.SaleItem;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> implements Filterable
-{
-
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> implements Filterable {
 
 
     public ItemAdapter() {
@@ -33,8 +31,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ConstraintLayout layout = (ConstraintLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,  parent,false);
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+                                             int viewType) {
+        ConstraintLayout layout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
+                                                                   .inflate(R.layout.list_item,
+                                                                            parent,
+                                                                            false);
 
         ItemViewHolder viewHolder = new ItemViewHolder(layout);
         return viewHolder;
@@ -47,7 +49,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.setSaleItem(saleItem);
 
     }
-
 
 
     @Override
@@ -67,12 +68,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                     ItemDB.getInstance().setFiltered_items(ItemDB.getInstance().getItems());
                 } else {
                     ArrayList<SaleItem> filteredList = new ArrayList<>();
-                    for (SaleItem item :  ItemDB.getInstance().getItems()) {
-                        if (item.getTitle().toLowerCase().contains(charString.toLowerCase())) {
+                    for (SaleItem item : ItemDB.getInstance()
+                                               .getItems()) {
+                        if (item.getTitle()
+                                .toLowerCase()
+                                .contains(charString.toLowerCase())) {
                             filteredList.add(item);
                         }
                     }
-                    ItemDB.getInstance().setFiltered_items(filteredList);
+                    ItemDB.getInstance()
+                          .setFiltered_items(filteredList);
                 }
 
                 FilterResults filterResults = new FilterResults();
@@ -82,7 +87,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                ItemDB.getInstance().setFiltered_items((ArrayList<SaleItem>) filterResults.values) ;
+                ItemDB.getInstance()
+                      .setFiltered_items((ArrayList<SaleItem>) filterResults.values);
 
                 notifyDataSetChanged();
             }
@@ -90,24 +96,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
 
-
-    public static class ItemData{
+    public static class ItemData {
         public String name;
         public String price;
         public String desc;
 
 
         public ItemData(SaleItem saleItem) {
-            this.name = name;
+            this.name  = name;
             this.price = price;
-            this.desc = desc;
+            this.desc  = desc;
         }
 
     }
 
 
-
-    public static class ItemViewHolder extends RecyclerView.ViewHolder{
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
         public SaleItem saleItem;
         public ConstraintLayout layout;
@@ -124,13 +128,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    HomeFragmentDirections.ActionNavHomeToBuiItemFragment2 directions = HomeFragmentDirections.actionNavHomeToBuiItemFragment2();
+                    HomeFragmentDirections.ActionNavHomeToBuiItemFragment2 directions = HomeFragmentDirections
+                            .actionNavHomeToBuiItemFragment2();
 
                     directions.setItemId(saleItem.getId());
 
                     //directions.setItemId(saleItem.getId());
-                    directions.getArguments().putLong("itemId",saleItem.getId());
-                    Navigation.findNavController(v).navigate(directions);
+                    directions.getArguments()
+                              .putLong("itemId", saleItem.getId());
+                    Navigation.findNavController(v)
+                              .navigate(directions);
                 }
             });
 
@@ -143,17 +150,23 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         public void setSaleItem(SaleItem saleItem) {
             this.saleItem = saleItem;
 
-            if (saleItem != null){
+            if (saleItem != null) {
                 this.cardName.setText(saleItem.getTitle());
-                this.cardPrice.setText(saleItem.getPrice().toString());
+                this.cardPrice.setText(saleItem.getPrice()
+                                               .toString());
                 this.cardDesc.setText(saleItem.getDescription());
 
-                if (!saleItem.getItemImages().isEmpty()){
+                if (!saleItem.getItemImages()
+                             .isEmpty()) {
 
-                    String url = String.format(FantApi.GET_IMAGE_URL, saleItem.getItemImages().get(0).getId(), imageView.getMeasuredWidth());
-                    this.imageView.setImageUrl(url, VolleyHttpQue.instance().getImageLoader());
+                    String url = String.format(FantApi.GET_IMAGE_URL,
+                                               saleItem.getItemImages()
+                                                       .get(0)
+                                                       .getId(),
+                                               imageView.getMeasuredWidth());
+                    this.imageView.setImageUrl(url, VolleyHttpQue.instance()
+                                                                 .getImageLoader());
                 }
-
 
 
             }

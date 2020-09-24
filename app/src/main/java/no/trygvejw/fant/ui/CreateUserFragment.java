@@ -1,29 +1,23 @@
 package no.trygvejw.fant.ui;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,8 +40,6 @@ public class CreateUserFragment extends Fragment {
 
     ProgressBar progressBar;
     TextView status;
-
-
 
 
     public CreateUserFragment() {
@@ -91,22 +83,21 @@ public class CreateUserFragment extends Fragment {
         });
 
 
-
-
-
-
-
         return root;
     }
 
-    private void sendCreateUserRequest(){
+    private void sendCreateUserRequest() {
 
 
-        final HashMap<String,String> jobj = new HashMap<>();
-        jobj.put("uid", username.getText().toString());
-        jobj.put("pwd", password.getText().toString());
-        jobj.put("mail", email.getText().toString());
-        jobj.put("name", name.getText().toString());
+        final HashMap<String, String> dataMap = new HashMap<>();
+        dataMap.put("uid", username.getText()
+                                .toString());
+        dataMap.put("pwd", password.getText()
+                                .toString());
+        dataMap.put("mail", email.getText()
+                              .toString());
+        dataMap.put("name", name.getText()
+                             .toString());
         GsonRequest<User> gsonRequest = new GsonRequest(
                 FantApi.CREATE_USER_URL,
                 Request.Method.POST,
@@ -116,12 +107,13 @@ public class CreateUserFragment extends Fragment {
                     @Override
                     public void onResponse(User response) {
                         progressBar.setVisibility(View.INVISIBLE);
-                        CurrentUser.getInstance().setUser(response);
+                        CurrentUser.getInstance()
+                                   .setUser(response);
                         Navigation.findNavController(getView()).popBackStack();
                     }
 
                 },
-                new Response.ErrorListener(){
+                new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -130,7 +122,7 @@ public class CreateUserFragment extends Fragment {
 
                     }
                 }
-        ){
+        ) {
             @Override
             public String getBodyContentType() {
                 return "application/x-www-form-urlencoded; charset=UTF-8";
@@ -138,13 +130,12 @@ public class CreateUserFragment extends Fragment {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                return jobj;
+                return dataMap;
             }
         };
 
 
         VolleyHttpQue.instance().addToRequestQue(gsonRequest);
-
 
 
     }
