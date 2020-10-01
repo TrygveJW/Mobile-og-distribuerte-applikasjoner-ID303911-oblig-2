@@ -43,15 +43,14 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Name:" />
 
                 <EditText
                     android:id="@+id/new_item_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
+                    android:inputType="textPersonName" />
             </TableRow>
 
             <TableRow
@@ -62,7 +61,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Description:" />
 
                 <EditText
                     android:id="@+id/new_item_desc"
@@ -81,7 +80,7 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Price:" />
 
                 <EditText
                     android:id="@+id/new_item_price"
@@ -99,13 +98,13 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="Image" />
 
                 <Button
                     android:id="@+id/uploadImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:text="Chose image" />
 
             </TableRow>
         </TableLayout>
@@ -115,7 +114,7 @@
         android:id="@+id/new_item_add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Add Item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

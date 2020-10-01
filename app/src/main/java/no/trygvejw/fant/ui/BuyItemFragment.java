@@ -15,12 +15,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Map;
 
 import no.trygvejw.fant.CurrentUser;
 import no.trygvejw.fant.FantApi;
@@ -86,7 +89,7 @@ public class BuyItemFragment extends Fragment {
 
         loginWarning = root.findViewById(R.id.buy_login_waring);
         buyButton    = root.findViewById(R.id.buy_button);
-        progressBar  = root.findViewById(R.id.loading);
+        progressBar  = root.findViewById(R.id.progressBar);
 
         if (CurrentUser.getInstance()
                        .isLoggedIn()) {
@@ -139,7 +142,7 @@ public class BuyItemFragment extends Fragment {
 
     private void buyItem() {
         StringRequest stringRequest = new StringRequest(
-                Request.Method.POST,
+                Request.Method.PUT,
                 String.format(FantApi.PURCHASE_ITEM_URL, item.getId()),
                 new Response.Listener<String>() {
                     @Override
@@ -149,12 +152,21 @@ public class BuyItemFragment extends Fragment {
                         progressBar.setVisibility(View.INVISIBLE);
                         Navigation.findNavController(getView())
                                   .popBackStack();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressBar.setVisibility(View.INVISIBLE);
             }
-        });
+
+    }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return CurrentUser.getInstance().getAuthHeaders();
+            }
+        };
+
+        VolleyHttpQue.instance().addToRequestQue(stringRequest);
     }
 }

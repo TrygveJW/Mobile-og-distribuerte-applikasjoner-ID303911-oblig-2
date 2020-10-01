@@ -80,6 +80,8 @@ public class UserFragment extends Fragment {
         } else {
             login_out.setText(R.string.Log_in);
 
+            status.setText("not logged in");
+
             login_out.setOnClickListener(v -> {
                 NavDirections directions_new_user = UserFragmentDirections.actionUserToLogin();
                 Navigation.findNavController(v).navigate(directions_new_user);

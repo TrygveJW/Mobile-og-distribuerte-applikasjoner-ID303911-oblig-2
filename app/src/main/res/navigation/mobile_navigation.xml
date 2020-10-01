@@ -32,33 +32,31 @@
     </fragment>
 
 
-
-
     <fragment
         android:id="@+id/login_submitt_btn"
         android:name="no.trygvejw.fant.ui.LoginFragment"
-        android:label="fragment_login"
+        android:label="@string/Log_in"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/buiItemFragment"
         android:name="no.trygvejw.fant.ui.BuyItemFragment"
-        android:label="fragment_buy_item"
+        android:label="Buy item"
         tools:layout="@layout/fragment_buy_item">
         <argument
             android:name="itemId"
-            app:argType="long"
-            android:defaultValue="1L" />
+            android:defaultValue="1L"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/create_user"
         android:name="no.trygvejw.fant.ui.CreateUserFragment"
-        android:label="fragment_create_user"
+        android:label="Create User"
         tools:layout="@layout/fragment_create_user" />
     <fragment
         android:id="@+id/nav_user"
         android:name="no.trygvejw.fant.ui.UserFragment"
-        android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
+        android:label="User"
+        tools:layout="@layout/fragment_user">
         <action
             android:id="@+id/action_user_to_login"
             app:destination="@id/login_submitt_btn" />
@@ -69,6 +67,6 @@
     <fragment
         android:id="@+id/add_item"
         android:name="no.trygvejw.fant.ui.AddItemFragment"
-        android:label="fragment_add_item"
+        android:label="Add Item"
         tools:layout="@layout/fragment_add_item" />
 </navigation>
